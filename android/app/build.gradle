@@ -12,7 +12,17 @@ android {
         applicationId "com.example.hitungkas"
         minSdk flutter.minSdkVersion
         targetSdk flutter.targetSdkVersion
-        versionCode 1
+        vapplication"` plugin.
+
+### Root Cause
+The build failure is likely caused by:
+1. Missing or incompatible Gradle dependencies
+2. Incorrect Android Gradle Plugin (AGP) version
+3. Missing `buildscript` block to define plugin repositories and dependencies
+
+### Recommended Fix
+
+Add a `buildscript` block at the top of `android/app/build.gradle` before the `pluginsersionCode 1
         versionName "1.0.0"
     }
 
@@ -21,4 +31,17 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+}` block:
+
+```gradle
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.
+
+flutter {
+    source '../..'
 }
